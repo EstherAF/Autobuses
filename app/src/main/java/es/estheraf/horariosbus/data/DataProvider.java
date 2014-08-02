@@ -1,6 +1,7 @@
 package es.estheraf.horariosbus.data;
 
 import java.util.Collection;
+import java.util.List;
 
 import es.estheraf.horariosbus.data.loader.DataContainer;
 import es.estheraf.horariosbus.data.model.Route;
@@ -18,12 +19,12 @@ public class DataProvider {
     }
 
 
-    public static Collection<Stop> getStops(){
+    public static List<Stop> getStops(){
         //TODO
         return null;
     }
 
-    public static Collection<Route> getRoute(Integer idOrigin, Integer idDestination){
+    public static List<Route> getRoute(Integer idOrigin, Integer idDestination){
         //TODO
         return null;
     }
