@@ -17,4 +17,18 @@ public class Stop {
      */
     public String name;
 
+    /**
+     * Default constructor
+     */
+    public Stop() {
+    }
+
+    /**
+     * Constructor that receives all attributes
+     */
+    public Stop(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
 }
