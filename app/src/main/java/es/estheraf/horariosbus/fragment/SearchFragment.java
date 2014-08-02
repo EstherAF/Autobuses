@@ -16,6 +16,11 @@ import es.estheraf.horariosbus.R;
 import es.estheraf.horariosbus.adapter.StopsSpinnerAdapter;
 import es.estheraf.horariosbus.data.model.Stop;
 
+/**
+ * Fragment in charge of displaying routes search screen
+ *
+ * @author Félix Queiruga Balado
+ */
 public class SearchFragment extends Fragment {
 
     private Spinner mOrigins;

@@ -14,6 +14,9 @@ import android.os.Build;
 import es.estheraf.horariosbus.fragment.SearchFragment;
 
 
+/**
+ * @author Félix Queiruga Balado
+ */
 public class MainActivity extends Activity {
 
     @Override

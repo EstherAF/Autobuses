@@ -13,6 +13,11 @@ import java.util.List;
 
 import es.estheraf.horariosbus.data.model.Stop;
 
+/**
+ * SpinnerAdapter for a list of Stops
+ *
+ * @author Félix Queiruga Balado
+ */
 public class StopsSpinnerAdapter extends ArrayAdapter<Stop> implements SpinnerAdapter {
 
     private List<Stop> mStops;
