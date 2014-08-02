@@ -1,0 +1,20 @@
+{
+    'stops':[
+		{
+		    'id': '1',
+		    'Santiago (Est. Autobuses)',
+		},
+		{
+		    'id': '2',
+		    'Santiago (La Rosa)',
+        },
+        {
+            'id': '3',
+		    'Santiago (Rosalía de Castro 1)',
+        },
+        {
+            'id': '4'
+		    'Milladoiro (Rosalía de Castro 1)'
+        }
+	]
+}
