@@ -13,17 +13,40 @@ import es.estheraf.horariosbus.data.model.Stop;
  */
 public class DataProvider {
 
-    private DataContainer getDataContainer(){
+    private DataContainer getDataContainer() {
         return DataContainer.getInstance();
     }
 
 
-    public static Collection<Stop> getStops(){
+    /**
+     * Returns a list of all stops
+     *
+     * @return
+     */
+    public static Collection<Stop> getStops() {
         //TODO
         return null;
     }
 
-    public static Collection<Route> getRoute(Integer idOrigin, Integer idDestination){
+    /**
+     * Returns all destinations for a given origin
+     *
+     * @param origin
+     * @return
+     */
+    public static Collection<Stop> getDestinations(Stop origin) {
+        //TODO
+        return null;
+    }
+
+    /**
+     * Returns all routes between two stops
+     *
+     * @param idOrigin
+     * @param idDestination
+     * @return
+     */
+    public static Collection<Route> getRoutes(Integer idOrigin, Integer idDestination) {
         //TODO
         return null;
     }
