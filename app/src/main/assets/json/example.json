@@ -1,0 +1,40 @@
+{
+	'routes': [
+		{
+			'name': 'Santiago (Est. Autobuses) - Milladoiro',
+			'stops': [
+				{
+					'name': 'Santiago (Est. Autobuses)',
+					'time_from_previous':  '0'
+				}, 
+				{
+					'name': 'Santiago (Rosalía de Castro 1)',
+					'time_from_previous': '8'
+				},
+				{
+					'name': 'Milladoiro (Rosalia de Castro 1)',
+					'time_from_previous': '8'
+				}
+			],
+			'schedule':[
+				{
+					'weekly_days': [0,1,2,3,4],
+					'departures': ['08:30', '08:45', '09:00', '09:45']
+				}, 
+				{
+					'weekly_days': [5,6],
+					'departures': ['10:00', '11:00']
+				}
+			]
+		}
+	],
+	
+	'stops':[
+		'Santiago (Est. Autobuses)', 
+		'Santiago (La Rosa)',
+		'Santiago (Rosalía de Castro 1)', 
+		'Milladoiro (Rosalía de Castro 1)'
+	]
+
+
+}
