@@ -52,12 +52,12 @@ public class SearchFragment extends Fragment {
         );
     }
 
-    private void updateDestinationsSpinner(int i) {
-        Stop selectedOrigin = mOriginsAdapter.getItem(i);
         List<Stop> newDestinations = Arrays.asList(
                 new Stop(3, "Destination 1 for Origin " + selectedOrigin.id),
                 new Stop(4, "Destination 2 for Origin " + selectedOrigin.id)
         );
+    private void updateDestinationsSpinner(int position) {
+        Stop selectedOrigin = mOriginsAdapter.getItem(position);
         mDestinationsAdapter.clear();
         mDestinationsAdapter.addAll(newDestinations);
         mDestinationsAdapter.notifyDataSetChanged();
@@ -66,8 +66,8 @@ public class SearchFragment extends Fragment {
     private class OriginsSpinnerListener implements AdapterView.OnItemSelectedListener {
 
         @Override
-        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            updateDestinationsSpinner(i);
+        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+            updateDestinationsSpinner(position);
         }
 
         @Override
