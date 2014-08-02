@@ -5,7 +5,7 @@ package es.estheraf.horariosbus.data.loader;
  *
  * @author Esther Álvarez Feijoo
  */
-public class JsonDataLoader {
+public class MainDataLoader {
 
     public static String sDataSourceJsonName="example.json";
 

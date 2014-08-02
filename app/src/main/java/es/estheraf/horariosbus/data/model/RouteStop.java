@@ -1,5 +1,7 @@
 package es.estheraf.horariosbus.data.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 /**
@@ -17,5 +19,12 @@ public class RouteStop {
     /**
      * Duration (minutes) of trip between previous and this stop.
      */
+    @JsonProperty(value = "time_from_previous", required = true)
     public Date timeFromPrevious;
+
+
+    @JsonProperty(value = "id", required = true)
+    private void setStop(Integer id) {
+        this.stop = new Stop(id);
+    }
 }
