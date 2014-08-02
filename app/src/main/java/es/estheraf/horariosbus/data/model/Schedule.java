@@ -25,7 +25,7 @@ public class Schedule {
     /**
      * Time (hours and minutes) of departures
      */
-    @JsonDeserialize(using = TimeJsonDeserializer.class)
     @JsonProperty(value = "depatures", required = true)
+    @JsonDeserialize(contentAs = Date.class, using = TimeJsonDeserializer.class)
     public Collection<Date> departures;
 }
