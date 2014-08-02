@@ -5,4 +5,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Search Fragment -->
+    <string name="search_origin_label">Origen:</string>
+    <string name="search_destination_label">Destino:</string>
+    <string name="search_action_label">Buscar</string>
+
 </resources>
