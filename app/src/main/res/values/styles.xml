@@ -19,7 +19,7 @@
 
     <!--- Buttons -->
     <style name="AppTheme.Button" parent="android:Widget.Holo.Button">
-        <item name="android:background">@color/green_light</item>
+        <item name="android:background">@drawable/button_bg</item>
     </style>
 
 </resources>
