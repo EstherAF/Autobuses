@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Green palette -->
+    <color name="green">#259b24</color>
+    <color name="green_light">#42bd41</color>
+    <color name="green_dark">#0a7e07</color>
+
+</resources>
