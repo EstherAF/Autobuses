@@ -1,5 +1,6 @@
 <resources>
     <!-- Spaces -->
+    <dimen name="space_small">8dp</dimen>
     <dimen name="space_medium">16dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->

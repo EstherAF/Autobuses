@@ -15,6 +15,8 @@ import es.estheraf.horariosbus.R;
 import es.estheraf.horariosbus.adapter.StopsSpinnerAdapter;
 import es.estheraf.horariosbus.data.DataProvider;
 import es.estheraf.horariosbus.data.model.Stop;
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.view.CardView;
 
 /**
  * Fragment in charge of displaying routes search screen
@@ -22,6 +24,8 @@ import es.estheraf.horariosbus.data.model.Stop;
  * @author Félix Queiruga Balado
  */
 public class SearchFragment extends Fragment {
+
+    private CardView mSearchCardView;
 
     private Spinner mOrigins;
     private Spinner mDestinations;
@@ -31,7 +35,18 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
+        initCardView(view);
+        initSpinners(view);
+        return view;
+    }
 
+    private void initCardView(View view) {
+        mSearchCardView = (CardView) view.findViewById(R.id.card_search);
+        Card card = new Card(getActivity(), R.layout.card_search);
+        mSearchCardView.setCard(card);
+    }
+
+    private void initSpinners(View view) {
         mOrigins = (Spinner) view.findViewById(R.id.origin);
         mDestinations = (Spinner) view.findViewById(R.id.destination);
 
@@ -41,8 +56,6 @@ public class SearchFragment extends Fragment {
 
         mDestinationsAdapter = new StopsSpinnerAdapter(getActivity(), new ArrayList<Stop>());
         mDestinations.setAdapter(mDestinationsAdapter);
-
-        return view;
     }
 
     private List<Stop> getStops() {
