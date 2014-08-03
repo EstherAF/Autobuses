@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import es.estheraf.horariosbus.R;
@@ -47,10 +46,7 @@ public class SearchFragment extends Fragment {
     }
 
     private List<Stop> getStops() {
-        return Arrays.asList(
-                new Stop(1, "Origin 1"),
-                new Stop(2, "Origin 2")
-        );
+        return DataProvider.getStops();
     }
 
     private void updateDestinationsSpinner(int position) {
@@ -70,7 +66,6 @@ public class SearchFragment extends Fragment {
 
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
-            return;
         }
     }
 
