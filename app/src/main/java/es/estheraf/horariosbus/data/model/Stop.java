@@ -1,9 +1,6 @@
 package es.estheraf.horariosbus.data.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.io.Serializable;
 
 /**
  * POJO for bus stop
@@ -21,7 +18,7 @@ public class Stop {
     /**
      * Name for this stop
      */
-    @JsonProperty(value = "name",required = true)
+    @JsonProperty(value = "name", required = true)
     public String name;
 
     /**

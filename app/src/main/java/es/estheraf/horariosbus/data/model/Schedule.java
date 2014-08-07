@@ -1,14 +1,12 @@
 package es.estheraf.horariosbus.data.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import es.estheraf.horariosbus.data.loader.deserializer.TimeJsonDeserializer;
+import es.estheraf.horariosbus.data.loader.deserializer.ListTimeJsonDeserializer;
 
 /**
  * POJO for route's schedule
@@ -27,6 +25,6 @@ public class Schedule {
      * Time (hours and minutes) of departures
      */
     @JsonProperty(value = "departures", required = true)
-    @JsonDeserialize(contentAs = Date.class, using = TimeJsonDeserializer.class)
+    @JsonDeserialize(using = ListTimeJsonDeserializer.class)
     public List<Date> departures;
 }

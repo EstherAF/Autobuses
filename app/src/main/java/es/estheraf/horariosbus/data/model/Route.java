@@ -20,7 +20,7 @@ public class Route {
     /**
      * Ordered routeStops of this route
      */
-    @JsonProperty(value = "routeStops", required = true)
+    @JsonProperty(value = "stops", required = true)
     public List<RouteStop> routeStops;
 
     @JsonProperty(value = "schedules", required = true)

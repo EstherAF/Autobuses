@@ -9,7 +9,7 @@ import java.util.Date;
  *
  * @author Esther Álvarez Feijoo
  */
-public class RouteStop extends Stop{
+public class RouteStop extends Stop {
 
     /**
      * Duration (minutes) of trip between previous and this stop.
@@ -19,20 +19,16 @@ public class RouteStop extends Stop{
 
     @Override
     public boolean equals(Object o) {
-        if(o.getClass().equals(Stop.class)) {
-            return super.equals(o);
-        } else {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            if (!super.equals(o)) return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
-            RouteStop routeStop = (RouteStop) o;
+        RouteStop routeStop = (RouteStop) o;
 
-            if (timeFromPrevious != null ? !timeFromPrevious.equals(routeStop.timeFromPrevious) : routeStop.timeFromPrevious != null)
-                return false;
+        if (timeFromPrevious != null ? !timeFromPrevious.equals(routeStop.timeFromPrevious) : routeStop.timeFromPrevious != null)
+            return false;
 
-            return true;
-        }
+        return true;
     }
 
     @Override
