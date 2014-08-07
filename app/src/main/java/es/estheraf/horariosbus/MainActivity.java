@@ -1,15 +1,8 @@
 package es.estheraf.horariosbus;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 
 import es.estheraf.horariosbus.fragment.SearchFragment;
 
@@ -19,8 +12,14 @@ import es.estheraf.horariosbus.fragment.SearchFragment;
  */
 public class MainActivity extends Activity {
 
+    /**
+     * Singleton
+     */
+    private static MainActivity instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        instance = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
@@ -28,6 +27,16 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new SearchFragment())
                     .commit();
         }
+    }
+
+    /** Get singleton instance of activity **/
+    public static MainActivity getInstance() {
+        return instance;
+    }
+
+    /** Returns context of this activity **/
+    public static Context getContext(){
+        return instance.getApplicationContext();
     }
 
 }
