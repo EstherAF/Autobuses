@@ -13,7 +13,7 @@ import java.util.List;
 
 import es.estheraf.horariosbus.R;
 import es.estheraf.horariosbus.adapter.StopsSpinnerAdapter;
-import es.estheraf.horariosbus.data.DataProvider;
+import es.estheraf.horariosbus.data.StopProvider;
 import es.estheraf.horariosbus.data.model.Stop;
 
 /**
@@ -46,12 +46,12 @@ public class SearchFragment extends Fragment {
     }
 
     private List<Stop> getStops() {
-        return DataProvider.getStops();
+        return StopProvider.getStops();
     }
 
     private void updateDestinationsSpinner(int position) {
         Stop selectedOrigin = mOriginsAdapter.getItem(position);
-        List<Stop> newDestinations = DataProvider.getDestinations(selectedOrigin);
+        List<Stop> newDestinations = StopProvider.getDestinations(selectedOrigin);
         mDestinationsAdapter.clear();
         mDestinationsAdapter.addAll(newDestinations);
         mDestinationsAdapter.notifyDataSetChanged();
