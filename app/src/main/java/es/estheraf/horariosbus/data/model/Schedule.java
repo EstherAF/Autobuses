@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import es.estheraf.horariosbus.data.loader.deserializer.TimeJsonDeserializer;
 
@@ -20,12 +21,12 @@ public class Schedule {
      * Days of week of this schedule
      */
     @JsonProperty(value = "weekly_days", required = true)
-    public Collection<Integer> weeklyDays;
+    public List<Integer> weeklyDays;
 
     /**
      * Time (hours and minutes) of departures
      */
-    @JsonProperty(value = "depatures", required = true)
+    @JsonProperty(value = "departures", required = true)
     @JsonDeserialize(contentAs = Date.class, using = TimeJsonDeserializer.class)
-    public Collection<Date> departures;
+    public List<Date> departures;
 }
