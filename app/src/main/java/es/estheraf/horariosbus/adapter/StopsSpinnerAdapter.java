@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import java.util.Collection;
 import java.util.List;
 
 import es.estheraf.horariosbus.data.model.Stop;
