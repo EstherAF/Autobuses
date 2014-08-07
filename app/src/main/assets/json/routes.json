@@ -1,31 +1,29 @@
-{
-	'routes': [
-		{
-			'name': 'Santiago (Est. Autobuses) - Milladoiro',
-			'stops': [
-				{
-					'id': '1',
-					'time_from_previous':  '0'
-				}, 
-				{
-					'id': '3',
-					'time_from_previous': '8'
-				},
-				{
-					'id': '4',
-					'time_from_previous': '8'
-				}
-			],
-			'schedule':[
-				{
-					'weekly_days': [0,1,2,3,4],
-					'departures': ['08:30', '08:45', '09:00', '09:45']
-				}, 
-				{
-					'weekly_days': [5,6],
-					'departures': ['10:00', '11:00']
-				}
-			]
-		}
-	]
-}
+[
+    {
+        "name": "Santiago (Est. Autobuses) - Milladoiro",
+        "stops": [
+            {
+                "id": "1",
+                "time_from_previous":  "0"
+            },
+            {
+                "id": "3",
+                "time_from_previous": "8"
+            },
+            {
+                "id": "4",
+                "time_from_previous": "8"
+            }
+        ],
+        "schedules":[
+            {
+                "weekly_days": [0,1,2,3,4],
+                "departures": ["08:30", "08:45", "09:00", "09:45"]
+            },
+            {
+                "weekly_days": [5,6],
+                "departures": ["10:00", "11:00"]
+            }
+        ]
+    }
+]
