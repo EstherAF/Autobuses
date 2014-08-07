@@ -2,7 +2,7 @@ package es.estheraf.horariosbus.data.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * POJO of bus routes
@@ -18,10 +18,11 @@ public class Route {
     public String name;
 
     /**
-     * Ordered stops of this route
+     * Ordered routeStops of this route
      */
-    @JsonProperty(value = "stops", required = true)
-    public Collection<RouteStop> stops;
+    @JsonProperty(value = "routeStops", required = true)
+    public List<RouteStop> routeStops;
 
-
+    @JsonProperty(value = "schedules", required = true)
+    public List<Schedule> schedules;
 }
