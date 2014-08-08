@@ -9,18 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity$PlaceholderFragment">
 
-    <it.gmariotti.cardslib.library.view.CardView
-        android:id="@+id/card_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+  <it.gmariotti.cardslib.library.view.CardView
+      android:id="@+id/card_search"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/search_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_medium"
-        android:paddingLeft="@dimen/space_medium"
-        android:paddingRight="@dimen/space_medium"
-        android:text="@string/search_action_label" />
 
 </LinearLayout>
