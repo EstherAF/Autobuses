@@ -1,7 +1,7 @@
 package es.estheraf.horariosbus.data;
 
-import es.estheraf.horariosbus.data.loader.DataContainer;
 import es.estheraf.horariosbus.data.exception.LoadingDataException;
+import es.estheraf.horariosbus.data.loader.DataContainer;
 
 /**
  * Provider of business data

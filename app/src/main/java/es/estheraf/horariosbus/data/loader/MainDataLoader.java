@@ -23,7 +23,7 @@ import es.estheraf.horariosbus.util.LogUtil;
  *
  * @author Esther Álvarez Feijoo
  */
-final class MainDataLoader extends Application{
+final class MainDataLoader extends Application {
 
     /**
      * Access and file information
@@ -37,7 +37,7 @@ final class MainDataLoader extends Application{
      */
     private static ObjectMapper mapper = new ObjectMapper();
 
-    private static InputStream openFile(String file) throws IOException{
+    private static InputStream openFile(String file) throws IOException {
         return MainActivity.getContext().getAssets().open(file);
     }
 
@@ -54,10 +54,11 @@ final class MainDataLoader extends Application{
      * @throws IOException Exception parsing JSON file
      */
     protected static List<Route> loadRoutes() throws LoadingDataException {
-        InputStream file=null;
+        InputStream file = null;
         try {
             file = openFile(sRoutesDataFile);
-            return mapper.readValue( file, new TypeReference<List<Route>>() {});
+            return mapper.readValue(file, new TypeReference<List<Route>>() {
+            });
         } catch (FileNotFoundException e) {
             LogUtil.error(e);
             return Collections.EMPTY_LIST;
@@ -75,7 +76,7 @@ final class MainDataLoader extends Application{
      * @throws IOException Exception parsing JSON file
      */
     protected static List<Stop> loadStops() throws LoadingDataException {
-        InputStream file=null;
+        InputStream file = null;
         try {
             file = openFile(sStopsDataFile);
             return mapper.readValue(file, new TypeReference<List<Stop>>() {

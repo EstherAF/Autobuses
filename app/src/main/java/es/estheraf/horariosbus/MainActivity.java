@@ -29,13 +29,17 @@ public class MainActivity extends Activity {
         }
     }
 
-    /** Get singleton instance of activity **/
+    /**
+     * Get singleton instance of activity *
+     */
     public static MainActivity getInstance() {
         return instance;
     }
 
-    /** Returns context of this activity **/
-    public static Context getContext(){
+    /**
+     * Returns context of this activity *
+     */
+    public static Context getContext() {
         return instance.getApplicationContext();
     }
 

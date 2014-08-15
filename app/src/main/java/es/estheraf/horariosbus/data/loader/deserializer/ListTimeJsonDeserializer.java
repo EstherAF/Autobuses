@@ -19,14 +19,15 @@ import java.util.List;
  */
 public class ListTimeJsonDeserializer extends JsonDeserializer<List<Date>> {
 
-    private static final TypeReference<List<String>> listType = new TypeReference<List<String>>() {};
+    private static final TypeReference<List<String>> listType = new TypeReference<List<String>>() {
+    };
 
     @Override
     public List<Date> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         List<Date> result = new ArrayList<Date>();
         Iterator<List<String>> readValues = jp.readValuesAs(listType);
-        if(readValues.hasNext()){
-            for(String readDate : readValues.next()) {
+        if (readValues.hasNext()) {
+            for (String readDate : readValues.next()) {
                 result.add(
                         formatStringIntoTime(readDate));
             }
@@ -34,7 +35,7 @@ public class ListTimeJsonDeserializer extends JsonDeserializer<List<Date>> {
         return result;
     }
 
-    private Date formatStringIntoTime(String sDate){
+    private Date formatStringIntoTime(String sDate) {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         try {
             return format.parse(sDate);
