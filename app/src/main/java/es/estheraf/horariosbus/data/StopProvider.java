@@ -57,4 +57,13 @@ public class StopProvider extends DataProvider {
         return new ArrayList<Stop>(result.values());
     }
 
+    public static Stop getStop(Integer idStop){
+        for(Stop stop : getStops()) {
+            if(stop.id.equals(idStop))
+                return stop;
+        }
+
+        return null;
+    }
+
 }
