@@ -6,6 +6,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,30 +22,26 @@ import java.util.List;
 /**
  * @author Esther Álvarez
  */
-public class ListTimeJsonDeserializer extends JsonDeserializer<List<Date>> {
+public class ListTimeJsonDeserializer extends JsonDeserializer<List<LocalTime>> {
+
+    private static DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
 
     private static final TypeReference<List<String>> listType = new TypeReference<List<String>>() {
     };
 
     @Override
-    public List<Date> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        List<Date> result = new ArrayList<Date>();
+    public List<LocalTime> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+        List<LocalTime> result = new ArrayList<LocalTime>();
         Iterator<List<String>> readValues = jp.readValuesAs(listType);
         if (readValues.hasNext()) {
             for (String readDate : readValues.next()) {
-                result.add(
-                        formatStringIntoTime(readDate));
+                result.add(formatStringIntoTime(readDate));
             }
         }
         return result;
     }
 
-    private Date formatStringIntoTime(String sDate) {
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        try {
-            return format.parse(sDate);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+    private LocalTime formatStringIntoTime(String sDate) {
+        return LocalTime.parse(sDate, formatter);
     }
 }

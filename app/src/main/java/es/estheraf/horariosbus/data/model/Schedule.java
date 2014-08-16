@@ -3,6 +3,8 @@ package es.estheraf.horariosbus.data.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import org.joda.time.LocalTime;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,5 +28,5 @@ public class Schedule {
      */
     @JsonProperty(value = "departures", required = true)
     @JsonDeserialize(using = ListTimeJsonDeserializer.class)
-    public List<Date> departures;
+    public List<LocalTime> departures;
 }

@@ -2,8 +2,6 @@ package es.estheraf.horariosbus.data.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Date;
-
 /**
  * POJO for routeStops of bus routes
  *
@@ -15,7 +13,7 @@ public class RouteStop extends Stop {
      * Duration (minutes) of trip between previous and this stop.
      */
     @JsonProperty(value = "time_from_previous", required = true)
-    public Date timeFromPrevious;
+    public Integer minutesFromOrigin;
 
     @Override
     public boolean equals(Object o) {
@@ -25,7 +23,7 @@ public class RouteStop extends Stop {
 
         RouteStop routeStop = (RouteStop) o;
 
-        if (timeFromPrevious != null ? !timeFromPrevious.equals(routeStop.timeFromPrevious) : routeStop.timeFromPrevious != null)
+        if (minutesFromOrigin != null ? !minutesFromOrigin.equals(routeStop.minutesFromOrigin) : routeStop.minutesFromOrigin != null)
             return false;
 
         return true;
@@ -34,7 +32,7 @@ public class RouteStop extends Stop {
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (timeFromPrevious != null ? timeFromPrevious.hashCode() : 0);
+        result = 31 * result + (minutesFromOrigin != null ? minutesFromOrigin.hashCode() : 0);
         return result;
     }
 }
