@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import es.estheraf.horariosbus.data.exception.LoadingDataException;
-import es.estheraf.horariosbus.data.helper.StopHelper;
+import es.estheraf.horariosbus.data.helper.model.StopHelper;
 import es.estheraf.horariosbus.data.model.Route;
 import es.estheraf.horariosbus.data.model.Stop;
 import es.estheraf.horariosbus.util.LogUtil;
@@ -51,7 +51,6 @@ public class StopProvider extends DataProvider {
                     Stop iStop = r.routeStops.get(i);
                     if (!result.containsKey(iStop.id)) result.put(iStop.id, iStop);
                 }
-
             }
         }
         return new ArrayList<Stop>(result.values());

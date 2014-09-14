@@ -3,7 +3,7 @@ package es.estheraf.horariosbus.data.loader;
 import java.util.List;
 
 import es.estheraf.horariosbus.data.exception.LoadingDataException;
-import es.estheraf.horariosbus.data.helper.StopHelper;
+import es.estheraf.horariosbus.data.helper.model.StopHelper;
 import es.estheraf.horariosbus.data.model.Route;
 import es.estheraf.horariosbus.data.model.RouteStop;
 import es.estheraf.horariosbus.data.model.Stop;
