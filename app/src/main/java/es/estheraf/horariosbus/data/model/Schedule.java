@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import org.joda.time.LocalTime;
 
-import java.util.Date;
 import java.util.List;
 
 import es.estheraf.horariosbus.data.loader.deserializer.ListTimeJsonDeserializer;

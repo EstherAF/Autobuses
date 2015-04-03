@@ -11,6 +11,9 @@ import java.util.List;
  */
 public class Route {
 
+    public Integer id;
+    public String company;
+
     /**
      * Route's name
      */

@@ -15,7 +15,7 @@
         android:text="@string/search_origin_label" />
 
     <Spinner
-        android:id="@+id/origin"
+        android:id="@+id/search_origin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -26,16 +26,26 @@
         android:layout_marginTop="@dimen/space_medium" />
 
     <Spinner
-        android:id="@+id/destination"
+        android:id="@+id/search_destination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/search_date_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_medium"
+        android:paddingLeft="@dimen/space_medium"
+        android:paddingRight="@dimen/space_medium"
+        style="?android:attr/buttonStyleSmall"
+    />
 
     <Button
         android:id="@+id/search_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/search_action_label"
-        android:layout_marginTop="@dimen/space_medium"
+        android:layout_marginTop="@dimen/space_high"
         android:paddingLeft="@dimen/space_medium"
         android:paddingRight="@dimen/space_medium" />
 

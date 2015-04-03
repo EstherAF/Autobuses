@@ -1,10 +1,25 @@
 <resources>
+    <!-- Font size -->
+    <dimen name="font_size_result_bar">15dp</dimen>
+
     <!-- Spaces -->
+    <dimen name="space_small">8dp</dimen>
     <dimen name="space_medium">16dp</dimen>
+    <dimen name="space_high">64dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Bar margins -->
+    <dimen name="bar_horizontal_padding">18dp</dimen>
+    <dimen name="bar_vertical_padding">8dp</dimen>
+    <dimen name="bar_horizontal_margin">8dp</dimen>
+    <dimen name="bar_text_padding">0dp</dimen>
+
+    <!-- List Item-->
+    <dimen name="list_item_vertical_margin">10dp</dimen>
+    <dimen name="list_item_vertical_padding">10dp</dimen>
+    <dimen name="list_item_horizontal_padding">8dp</dimen>
 
 </resources>

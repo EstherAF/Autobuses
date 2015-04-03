@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @author Esther Álvarez Feijoo
  */
-public class Stop {
+public class Stop implements Comparable {
 
     /**
      * Unique id for this stop
@@ -47,6 +47,7 @@ public class Stop {
         this.name = name;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,5 +63,10 @@ public class Stop {
     @Override
     public int hashCode() {
         return id.hashCode();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.name.compareTo(((Stop) o).name);
     }
 }

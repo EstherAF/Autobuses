@@ -2,12 +2,22 @@
 <resources>
 
     <string name="app_name">HorariosBus</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <!-- Search Fragment -->
     <string name="search_origin_label">Origen:</string>
     <string name="search_destination_label">Destino:</string>
+    <string name="search_date_label">Fecha:</string>
     <string name="search_action_label">Buscar</string>
+
+    <!-- Dates -->
+    <string name="date_today">Hoy</string>
+    <string name="date_tomorrow">Mañana</string>
+    <string name="date_yesterday">Ayer</string>
+    <string name="date_pattern">dd MMM yyyy</string>
+    <string name="time_pattern">hh:mm</string>
+
+    <!-- Result fragment -->
+    <string name="result_times_separator">" - "</string>
 
 </resources>

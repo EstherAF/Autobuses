@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Green palette -->
-    <color name="green">#259b24</color>
-    <color name="green_light">#42bd41</color>
-    <color name="green_dark">#0a7e07</color>
+    <color name="transparent">#00000000</color>
 
+    <!-- Green palette -->
+    <color name="green_light">#ff4ca303</color>
+    <color name="green">#ff4ca303</color>
+    <color name="green_dark">#ff538628</color>
+
+    <!--Gray palette-->
+    <color name="gray_lighter">#ccc</color>
+    <color name="gray_light">#999</color>
+    <color name="gray">#888</color>
+    <color name="gray_dark">#656565</color>
 </resources>

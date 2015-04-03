@@ -1,25 +1,58 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!--
+        Base application theme.
+    -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:buttonStyle">@style/AppTheme.Button</item>
     </style>
     
-    <!-- ActionBar -->
+    <!--
+        ActionBar
+    -->
     <style name="AppTheme.ActionBar" parent="android:Widget.Holo.ActionBar.Solid">
         <item name="android:background">@color/green</item>
         <item name="android:titleTextStyle">@style/AppTheme.ActionBar.Text</item>
     </style>
-
-    <style name="AppTheme.ActionBar.Text" parent="android:TextAppearance">
+    <style name="AppTheme.ActionBar.Text" parent="android:TextAppearance.DeviceDefault.Medium">
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <!--- Buttons -->
+    <!--
+        Buttons
+    -->
     <style name="AppTheme.Button" parent="android:Widget.Holo.Button">
-        <item name="android:background">@drawable/button_bg</item>
+        <item name="android:background">@drawable/button_green_bg</item>
+    </style>
+
+    <!--
+        Result Bar
+    -->
+    <style name="AppTheme.Result.Bar" parent="android:Widget.Holo.ActionBar.Solid">
+        <item name="android:background">@drawable/search_bar</item>
+    </style>
+    <style name="AppTheme.Result.Bar.Text" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!--
+        Result List
+    -->
+    <style name="AppTheme.Result.Item" parent="android:Widget.Holo.ActionBar.Solid">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:paddingLeft">@dimen/space_small</item>
+        <item name="android:paddingRight">@dimen/space_small</item>
+    </style>
+    <style name="AppTheme.Result.ItemPast" parent="AppTheme.Result.Item">
+        <item name="android:background">@drawable/bg_card_past</item>
+    </style>
+    <style name="AppTheme.Result.Item.Hour" parent="android:TextAppearance.DeviceDefault.Large">
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="AppTheme.Result.Item.Route" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:singleLine">true</item>
     </style>
 
 </resources>

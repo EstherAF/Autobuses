@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/list_item_horizontal_padding"
+    android:layout_marginRight="@dimen/list_item_horizontal_padding"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/list_item_vertical_padding"
+    android:paddingTop="@dimen/list_item_vertical_padding">
+
+    <TextView
+        android:id="@+id/result_list_elem_hour"
+        style="@style/AppTheme.Result.Item.Hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/result_list_elem_route_name"
+        style="@style/AppTheme.Result.Item.Route"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/result_list_elem_hour"
+        android:gravity="right" />
+
+</RelativeLayout>
