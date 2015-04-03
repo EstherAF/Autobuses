@@ -2,6 +2,8 @@ package es.estheraf.horariosbus.data.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,21 +13,35 @@ import java.util.List;
  */
 public class Route {
 
+    /**
+     * Internal _id
+     */
     public Integer id;
+
+    /**
+     * Company name
+     */
     public String company;
 
     /**
-     * Route's name
+     * Route's name (shorter)
      */
-    @JsonProperty(value = "name", required = true)
-    public String name;
+    public String nameShort;
+
+    /**
+     * Route's name (longer)
+     */
+    public String nameLong;
+
+    /**
+     * Days of week of this route
+     */
+    public List<Integer> days;
 
     /**
      * Ordered routeStops of this route
      */
-    @JsonProperty(value = "stops", required = true)
     public List<RouteStop> routeStops;
 
-    @JsonProperty(value = "schedules", required = true)
     public List<Schedule> schedules;
 }

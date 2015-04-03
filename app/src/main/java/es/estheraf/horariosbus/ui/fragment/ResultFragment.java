@@ -6,11 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import es.estheraf.horariosbus.R;
-import es.estheraf.horariosbus.business.model.SearchRoute;
+import es.estheraf.horariosbus.data.model.SearchRoute;
 import es.estheraf.horariosbus.ui.fragment.adapter.ResultListAdapter;
 import es.estheraf.horariosbus.ui.model.UIResult;
 

@@ -33,15 +33,4 @@ public interface StopProvider {
      * @return
      */
     Stop getStop(Integer idStop);
-
-    /**
-     * Find all the provided stops in the provided list
-     *
-     * @param routeStops  list of Stop, to look for in it
-     * @param stopsToFind list of stops to look for
-     * @return List of found Stops, with the same length as provided stop targets.
-     * Empty when (at least) one target isn't found in the same order.
-     * Empty when there's no routeStops or any stop target.
-     */
-    <T extends Stop> List<T> findStopsInStopCollection(Collection<T> routeStops, Integer... stopsToFind);
 }

@@ -3,8 +3,8 @@ package es.estheraf.horariosbus.ui.model;
 import java.io.Serializable;
 import java.util.List;
 
-import es.estheraf.horariosbus.business.model.SearchRoute;
-import es.estheraf.horariosbus.business.model.SimpleResultRoute;
+import es.estheraf.horariosbus.data.model.SearchRoute;
+import es.estheraf.horariosbus.data.model.SimpleResultRoute;
 
 /**
  * Created by Esther on 26/10/2014.

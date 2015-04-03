@@ -1,4 +1,4 @@
-package es.estheraf.horariosbus.data.loader.sqlite;
+package es.estheraf.horariosbus.data.provider.sqlite;
 
 import android.content.Context;
 import android.database.Cursor;

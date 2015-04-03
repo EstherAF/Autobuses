@@ -4,7 +4,7 @@ import org.joda.time.LocalDate;
 
 import java.util.List;
 
-import es.estheraf.horariosbus.business.model.SimpleResultRoute;
+import es.estheraf.horariosbus.data.model.SimpleResultRoute;
 import es.estheraf.horariosbus.data.model.Route;
 
 /**
@@ -17,7 +17,6 @@ public interface RouteProvider {
      *
      * @param idStop
      * @return list of routes. If there aren't coincidences or data loaded returns an empty list.
-     * @throws es.estheraf.horariosbus.exception.data.loader.LoadingDataException
      */
     List<Route> getRoutes(Integer idStop);
 

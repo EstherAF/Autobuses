@@ -1,25 +1,35 @@
 package es.estheraf.horariosbus.data.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
  * POJO for bus stop
  *
  * @author Esther Álvarez Feijoo
  */
-public class Stop implements Comparable {
+public class Stop {
 
     /**
      * Unique id for this stop
      */
-    @JsonProperty(value = "id", required = true)
     public Integer id;
 
     /**
-     * Name for this stop
+     * Short name
      */
-    @JsonProperty(value = "name", required = true)
-    public String name;
+    public String nameShort;
+
+    /**
+     * Long name
+     */
+    public String nameLong;
+
+
+    public String coords;
+
+    public Integer parentId;
+
+    public Stop parent;
+
+    public String desc;
 
     /**
      * Default constructor
@@ -40,11 +50,11 @@ public class Stop implements Comparable {
      * Constructor that receives all attributes
      *
      * @param id
-     * @param name
+     * @param nameShort
      */
-    public Stop(int id, String name) {
+    public Stop(int id, String nameShort) {
         this.id = id;
-        this.name = name;
+        this.nameShort = nameShort;
     }
 
 
@@ -63,10 +73,5 @@ public class Stop implements Comparable {
     @Override
     public int hashCode() {
         return id.hashCode();
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return this.name.compareTo(((Stop) o).name);
     }
 }

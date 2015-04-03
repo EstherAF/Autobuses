@@ -1,4 +1,4 @@
-package es.estheraf.horariosbus.business.model;
+package es.estheraf.horariosbus.data.model;
 
 import org.joda.time.LocalTime;
 

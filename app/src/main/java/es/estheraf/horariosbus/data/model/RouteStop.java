@@ -7,32 +7,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @author Esther Álvarez Feijoo
  */
-public class RouteStop extends Stop {
+public class RouteStop {
+
+    public Route route;
+    public Stop stop;
+
+    /**
+     * Order of the Stop in the route. First = 0
+     */
+    public Integer pos;
 
     /**
      * Duration (minutes) of trip between previous and this stop.
      */
-    @JsonProperty(value = "time_from_previous", required = true)
-    public Integer minutesFromOrigin;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-
-        RouteStop routeStop = (RouteStop) o;
-
-        if (minutesFromOrigin != null ? !minutesFromOrigin.equals(routeStop.minutesFromOrigin) : routeStop.minutesFromOrigin != null)
-            return false;
-
-        return true;
-    }
+    public Integer timeFromDeparture;
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (minutesFromOrigin != null ? minutesFromOrigin.hashCode() : 0);
+        result = 31 * result + (timeFromDeparture != null ? timeFromDeparture.hashCode() : 0);
         return result;
     }
 }

@@ -15,7 +15,7 @@ public class Util {
         return (o == null || o.isEmpty());
     }
 
-    public static final <T extends Number> boolean isEmpty(T o) {
+    public static final boolean isEmpty(Number o) {
         return (o == null || o.intValue() == 0);
     }
 

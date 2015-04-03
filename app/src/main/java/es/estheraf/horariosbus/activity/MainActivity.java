@@ -7,9 +7,9 @@ import android.os.Bundle;
 import java.util.List;
 
 import es.estheraf.horariosbus.R;
-import es.estheraf.horariosbus.business.manager.SearchManager;
-import es.estheraf.horariosbus.business.model.SearchRoute;
-import es.estheraf.horariosbus.business.model.SimpleResultRoute;
+import es.estheraf.horariosbus.data.DataProviderFacade;
+import es.estheraf.horariosbus.data.model.SearchRoute;
+import es.estheraf.horariosbus.data.model.SimpleResultRoute;
 import es.estheraf.horariosbus.ui.BundleKey;
 import es.estheraf.horariosbus.ui.fragment.ResultFragment;
 import es.estheraf.horariosbus.ui.fragment.SearchFragment;
@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
     public void doSearch() {
         SearchRoute search = (SearchRoute) bundle.getSerializable(BundleKey.SEARCH_FILTERS.val());
         //Business logic: do search
-        List<SimpleResultRoute> results = SearchManager.doSearch(search);
+        List<SimpleResultRoute> results = DataProviderFacade.getInstance().doSearch(search);
         //Put results in bundle
         bundle.putSerializable(BundleKey.RESULTS.val(), new UIResult(search, results));
         //Show result fragment

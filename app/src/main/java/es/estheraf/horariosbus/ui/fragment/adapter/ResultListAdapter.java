@@ -14,7 +14,7 @@ import org.joda.time.LocalTime;
 import java.util.List;
 
 import es.estheraf.horariosbus.R;
-import es.estheraf.horariosbus.business.model.SimpleResultRoute;
+import es.estheraf.horariosbus.data.model.SimpleResultRoute;
 
 /**
  * Created by esther on 28/10/14.
