@@ -10,8 +10,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import es.estheraf.horariosbus.activity.MainActivity;
+import es.estheraf.horariosbus.data.provider.exception.DataBaseException;
 import es.estheraf.horariosbus.util.IOUtil;
 
 /**
@@ -24,12 +27,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * TODO: move it to a xml/properties, to handle it in a declarative way
      */
     //The Android's default system path of your application database.
-    private static String DB_PATH = "/data/data/es.estheraf.horariosbus/databases/";
-    private static String DB_NAME = "routes";
-    private static String DB_FULL_PATH = DB_PATH + DB_NAME;
-    private static int DB_VERSION = 1;
+    private static final String DB_PATH = "/data/data/es.estheraf.horariosbus/databases/";
+    private static final String DB_FILE_NAME = "routes.db";
+    private static final String DB_NAME = "routes";
+    private static final String DB_FULL_PATH = DB_PATH + DB_NAME;
+    private static final int DB_VERSION = 1;
 
-
+    private static final Logger log = Logger.getLogger("DataBaseHelper");
 
 
     private SQLiteDatabase myDataBase;
@@ -56,8 +60,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             this.getReadableDatabase();
             try {
                 copyDataBase();
-            } catch (IOException e) {
-                throw new Error("Error copying database");
+                log.info("Database copied!");
+            } catch (DataBaseException e) {
+                log.log(Level.SEVERE, "", e);
+                throw new Error(e);
             }
         }
     }
@@ -115,8 +121,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * @return Cursor
      */
     public Cursor query(boolean distinct, String table, String[] columns,
-                                      String selection, String[] selectionArgs, String groupBy,
-                                      String having, String orderBy, String limit) {
+                        String selection, String[] selectionArgs, String groupBy,
+                        String having, String orderBy, String limit) {
         return myDataBase.query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
     }
 
@@ -127,10 +133,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * @param args
      * @return
      */
-    public Cursor rawQuery(String query, String... args){
+    public Cursor rawQuery(String query, String... args) {
         return myDataBase.rawQuery(query, args);
     }
-
 
 
     /**
@@ -146,6 +151,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         } catch (SQLiteException e) {
             //database doesn't exist yet.
+            log.info("Local database doesn't exists yet...");
         } finally {
             closeDataBase();
             if (checkDB != null) {    //if opened, close it
@@ -161,16 +167,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * system folder, from where it can be accessed and handled.
      * This is done by transfering bytestream.
      */
-    private void copyDataBase() throws IOException {
-        //Open local file (source) and empty db (destination)
-        InputStream input = myContext.getAssets().open(DB_NAME);    //local db (sqlite file)
-        OutputStream output = new FileOutputStream(DB_FULL_PATH);   //empty db (same name as file)
+    private void copyDataBase() throws DataBaseException {
+        InputStream input = null;
+        OutputStream output = null;
+        try {
+            //Open local file (source) and empty db (destination)
+            input = myContext.getAssets().open(DB_FILE_NAME);    //local db (sqlite file)
+            output = new FileOutputStream(DB_FULL_PATH);   //empty db (same name as file)
 
-        //Copy DB, input > output
-        IOUtil.copy(input, output);
+            //Copy DB, input > output
+            IOUtil.copy(input, output);
 
-        //Close the streams
-        output.close(); //auto flush
-        input.close();
+            //Close the streams
+            output.close(); //auto flush
+            input.close();
+        } catch (IOException ex) {
+            throw new DataBaseException("Exception copying DB from local assets.", ex);
+        } finally {
+            IOUtil.closeQuietly(input);
+            IOUtil.closeQuietly(output);
+        }
     }
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import es.estheraf.horariosbus.data.model.Stop;
 import es.estheraf.horariosbus.data.provider.StopProvider;
 import es.estheraf.horariosbus.data.provider.sqlite.cursor.StopCursor;
-import es.estheraf.horariosbus.data.provider.sqlite.definition.Naming;
 import es.estheraf.horariosbus.data.provider.sqlite.definition.StopDef;
 
 /**
@@ -26,7 +25,6 @@ public class StopProviderImpl implements StopProvider {
     }
 
     private StopProviderImpl(){
-        instance = new StopProviderImpl();
         dbHelper = new DataBaseHelper();
         dbHelper.createDataBase();
     }
@@ -36,7 +34,7 @@ public class StopProviderImpl implements StopProvider {
     public List<Stop> getStops() {
         dbHelper.openDataBase();
 
-        StopCursor cur = new StopCursor(dbHelper.rawQuery(StopDef.QUERY.ALL, null));
+        StopCursor cur = new StopCursor(dbHelper.rawQuery(StopDef.QUERY.ALL));
         List<Stop> result = cur.getAllValues();
         cur.close();
 

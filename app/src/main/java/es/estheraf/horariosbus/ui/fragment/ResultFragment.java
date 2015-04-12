@@ -75,8 +75,8 @@ public class ResultFragment extends Fragment {
          * @param search Object that contains search info, to generate bar's texts
          */
         private void populateView(View view, SearchRoute search) {
-            this.origin.setText(search.origin.name);
-            this.destination.setText(search.destination.name);
+            this.origin.setText(search.origin.nameShort);
+            this.destination.setText(search.destination.nameShort);
             String pattern = view.getResources().getString(R.string.date_pattern);
             this.date.setText(search.date.toString(pattern));
         }

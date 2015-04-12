@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
      */
     private static MainActivity instance;
 
-    private Bundle bundle;
+    private Bundle bundle = new Bundle();
 
     private SearchFragment searchFragment;
 
@@ -53,9 +53,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            if (bundle == null) bundle = new Bundle();
             searchFragment = showSearchFragment(bundle);
-
         } else {
             bundle = savedInstanceState.getBundle(BundleKey.MAIN_ACTIVITY_BUNDLE.val());
         }

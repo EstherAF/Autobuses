@@ -5,8 +5,8 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.estheraf.horariosbus.data.provider.sqlite.definition.Naming;
 import es.estheraf.horariosbus.data.model.Route;
+import es.estheraf.horariosbus.data.provider.sqlite.definition.RouteDef;
 
 /**
  * Created by Esther on 03/04/2015.
@@ -23,8 +23,8 @@ public class RouteCursor extends CustomCursor<Route>{
     public Route getCurrentValue() {
         Route result = new Route();
         result.id = super.getId();
-        result.nameShort = cursor.getString(getIndex(Naming.ROUTE.NAME_SHORT));
-        result.nameLong = cursor.getString(getIndex(Naming.ROUTE.NAME_LONG));
+        result.nameShort = cursor.getString(getIndex(RouteDef.NAME_SHORT));
+        result.nameLong = cursor.getString(getIndex(RouteDef.NAME_LONG));
         //result.days = getDays(cursor.getString(getIndex(Naming.ROUTE.DAYS_MAP)));     //not for now
         //result.company = cursor.getString(getIndex(Naming.ROUTE.COMPANY));     //not for now
         //result.desc = cursor.getString(getIndex(Naming.ROUTE.DESC));   //not necessary

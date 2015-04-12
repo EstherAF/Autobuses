@@ -21,7 +21,6 @@ public class RouteProviderImpl implements RouteProvider {
 
     private RouteProviderImpl(){
         super();
-        instance = this;
         dbHelper = new DataBaseHelper();
         dbHelper.createDataBase();
     }
