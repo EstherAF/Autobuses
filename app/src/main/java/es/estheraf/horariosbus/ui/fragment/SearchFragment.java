@@ -138,13 +138,25 @@ public class SearchFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            SearchRoute search = new SearchRoute();
-            search.origin=(Stop) mOrigins.getSelectedItem();
-            search.destination=(Stop) mDestinations.getSelectedItem();
-            search.date = (LocalDate) getArguments().getSerializable(PICKED_DATE.val());
-            getArguments().putSerializable(BundleKey.SEARCH_FILTERS.val(), search);
+            SearchRoute search = getValues();
+            if (checkFields(search)) {
+                getArguments().putSerializable(BundleKey.SEARCH_FILTERS.val(), search);
+                ((MainActivity) getActivity()).doSearch();
+            } else {
+                Log.d(TAG, "Missing some required field");
+            }
+        }
 
-            ((MainActivity) getActivity()).doSearch();
+        private SearchRoute getValues() {
+            SearchRoute search = new SearchRoute();
+            search.origin = (Stop) mOrigins.getSelectedItem();
+            search.destination = (Stop) mDestinations.getSelectedItem();
+            search.date = (LocalDate) getArguments().getSerializable(PICKED_DATE.val());
+            return search;
+        }
+
+        private boolean checkFields(SearchRoute search) {
+            return search != null && search.origin != null && search.destination != null && search.date != null;
         }
     }
 
