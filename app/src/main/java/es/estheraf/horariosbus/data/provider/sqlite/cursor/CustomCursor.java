@@ -1,27 +1,31 @@
 package es.estheraf.horariosbus.data.provider.sqlite.cursor;
 
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.estheraf.horariosbus.data.provider.exception.DataBaseException;
 import es.estheraf.horariosbus.util.Util;
 
 /**
  * Created by Esther on 03/04/2015.
  */
 public abstract class CustomCursor<C> {
+    //Constants
+    public static final String _ID = "_id";   //PK column's name
+    public final String TAG = this.getClass().getSimpleName();
 
-    private Map<String, Integer> columnIndexes = new HashMap<String, Integer>();
-
-    public static String _ID = "_id";
-
-    public Cursor cursor;
+    //Instance's attributes
+    public Cursor cursor;   //DB cursor to handle
+    private Map<String, Integer> columnIndexes = new HashMap<String, Integer>();    //Map of <columnName, idColumns>
 
     public CustomCursor(Cursor cursor) {
         cursor = cursor;
+        Log.v(TAG, "Constructor, cursor is " + ((cursor == null) ? "" : "not") + " empty");
     }
 
     public Integer getId() {
@@ -51,13 +55,14 @@ public abstract class CustomCursor<C> {
     }
 
     public List<C> getAllValues() {
+        Log.v(TAG, "Start getAllValues()");
         List<C> result = new ArrayList<C>();
         if (cursor.moveToFirst()) {
             do {
                 result.add(getCurrentValue());
             } while (cursor.moveToNext());  //move cursor
         }
-
+        Log.v(TAG, "End getAllValues(). "+result.size()+" results.");
         return result;
     }
 

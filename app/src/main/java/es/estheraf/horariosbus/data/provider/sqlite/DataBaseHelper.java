@@ -5,22 +5,24 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import es.estheraf.horariosbus.activity.MainActivity;
 import es.estheraf.horariosbus.data.provider.exception.DataBaseException;
 import es.estheraf.horariosbus.util.IOUtil;
+import es.estheraf.horariosbus.util.Util;
 
 /**
  * Created by Esther on 21/03/2015.
  */
 public class DataBaseHelper extends SQLiteOpenHelper {
+
+    public final String TAG = this.getClass().getSimpleName();
 
     /**
      * DB base configuration.
@@ -32,9 +34,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "routes";
     private static final String DB_FULL_PATH = DB_PATH + DB_NAME;
     private static final int DB_VERSION = 1;
-
-    private static final Logger log = Logger.getLogger("DataBaseHelper");
-
 
     private SQLiteDatabase myDataBase;
     private final Context myContext;
@@ -60,9 +59,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             this.getReadableDatabase();
             try {
                 copyDataBase();
-                log.info("Database copied!");
+                Log.i(TAG, "Database copied!");
             } catch (DataBaseException e) {
-                log.log(Level.SEVERE, "", e);
+                Log.e(TAG, "Error copying database", e);
                 throw new Error(e);
             }
         }
@@ -134,6 +133,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * @return
      */
     public Cursor rawQuery(String query, String... args) {
+        Log.v(TAG, "Executing rawQuery. Query = ["+query+"]. Arguments = ["+ Util.toString(args)+"].");
         return myDataBase.rawQuery(query, args);
     }
 

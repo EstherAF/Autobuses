@@ -2,6 +2,7 @@ package es.estheraf.horariosbus.ui.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,13 @@ import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.estheraf.horariosbus.activity.MainActivity;
 import es.estheraf.horariosbus.R;
+import es.estheraf.horariosbus.activity.MainActivity;
 import es.estheraf.horariosbus.data.model.SearchRoute;
+import es.estheraf.horariosbus.data.model.Stop;
 import es.estheraf.horariosbus.data.provider.sqlite.StopProviderImpl;
 import es.estheraf.horariosbus.ui.BundleKey;
 import es.estheraf.horariosbus.ui.fragment.adapter.StopsSpinnerAdapter;
-import es.estheraf.horariosbus.data.model.Stop;
 
 import static es.estheraf.horariosbus.ui.BundleKey.PICKED_DATE;
 
@@ -29,7 +30,9 @@ import static es.estheraf.horariosbus.ui.BundleKey.PICKED_DATE;
  *
  * @author Esther Álvarez Feijoo
  */
-public class SearchFragment extends Fragment{
+public class SearchFragment extends Fragment {
+
+    private final String TAG = this.getClass().getSimpleName();
 
     private Spinner mOrigins;
     private Spinner mDestinations;
@@ -41,7 +44,7 @@ public class SearchFragment extends Fragment{
     private StopsSpinnerAdapter mDestinationsAdapter;
 
 
-    public static SearchFragment newInstance(Bundle bundle){
+    public static SearchFragment newInstance(Bundle bundle) {
         SearchFragment fragment = new SearchFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -50,7 +53,7 @@ public class SearchFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //initialize Bundle
-        if(!getArguments().containsKey(PICKED_DATE.val()))
+        if (!getArguments().containsKey(PICKED_DATE.val()))
             getArguments().putSerializable(PICKED_DATE.val(), LocalDate.now());
 
         //Inflate fragment on view container
@@ -58,7 +61,7 @@ public class SearchFragment extends Fragment{
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //Initialize references to existing view elements
         initializeViewReferences(getView());
@@ -78,14 +81,14 @@ public class SearchFragment extends Fragment{
     /**
      * Creating the fragment
      */
-    private void initializeViewReferences(View view){
+    private void initializeViewReferences(View view) {
         mOrigins = (Spinner) view.findViewById(R.id.search_origin);
         mDestinations = (Spinner) view.findViewById(R.id.search_destination);
         mDate = (Button) view.findViewById(R.id.search_date_btn);
         mSearch = (Button) view.findViewById(R.id.search_btn);
     }
 
-    private void createAdapters(){
+    private void createAdapters() {
         mOriginsAdapter = new StopsSpinnerAdapter(getActivity(), StopProviderImpl.getInstance().getStops());
         mOrigins.setAdapter(mOriginsAdapter);
         mDestinationsAdapter = new StopsSpinnerAdapter(getActivity(), new ArrayList<Stop>());
@@ -129,7 +132,7 @@ public class SearchFragment extends Fragment{
         }
     }
 
-    private class SearchButtonListener implements AdapterView.OnClickListener{
+    private class SearchButtonListener implements AdapterView.OnClickListener {
 
         @Override
         public void onClick(View view) {

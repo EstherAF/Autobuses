@@ -3,6 +3,7 @@ package es.estheraf.horariosbus.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.List;
 
@@ -21,6 +22,8 @@ import es.estheraf.horariosbus.ui.model.UIResult;
  */
 public class MainActivity extends Activity {
 
+    private final String TAG = this.getClass().getSimpleName();
+
     /**
      * Singleton
      */
@@ -28,8 +31,8 @@ public class MainActivity extends Activity {
 
     private Bundle bundle = new Bundle();
 
+    //Fragments
     private SearchFragment searchFragment;
-
     private ResultFragment resultFragment;
 
     /**
@@ -48,13 +51,16 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        instance = this;
+        Log.v(TAG, "onCreate()");
+        instance = this;    //Init singleton
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
+            Log.v(TAG, "no saved instance state");
             searchFragment = showSearchFragment(bundle);
         } else {
+            Log.v(TAG, "exist saved instance state");
             bundle = savedInstanceState.getBundle(BundleKey.MAIN_ACTIVITY_BUNDLE.val());
         }
     }
@@ -63,6 +69,7 @@ public class MainActivity extends Activity {
      * Handle Search operation. Takes SEARCH_FILTER from the Bundle.
      */
     public void doSearch() {
+        Log.v(TAG, "doSearch()");
         SearchRoute search = (SearchRoute) bundle.getSerializable(BundleKey.SEARCH_FILTERS.val());
         //Business logic: do search
         List<SimpleResultRoute> results = DataProviderFacade.getInstance().doSearch(search);
@@ -73,6 +80,7 @@ public class MainActivity extends Activity {
     }
 
     private SearchFragment showSearchFragment(Bundle bundle) {
+        Log.v(TAG, "showSearchFragment()");
         SearchFragment fragment = SearchFragment.newInstance(bundle);
         getFragmentManager().beginTransaction()
                 .add(R.id.container, fragment)
@@ -81,6 +89,7 @@ public class MainActivity extends Activity {
     }
 
     private ResultFragment showResultFragment(Bundle bundle) {
+        Log.v(TAG, "showResultFragment()");
         ResultFragment fragment = ResultFragment.newInstance(bundle);
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment)
@@ -92,6 +101,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        Log.v(TAG, "onSaveInstanceState()");
         super.onSaveInstanceState(outState);
         // Save actual entries in private bundle
         outState.putBundle(BundleKey.MAIN_ACTIVITY_BUNDLE.val(), bundle);

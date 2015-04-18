@@ -1,5 +1,7 @@
 package es.estheraf.horariosbus.data.provider.sqlite;
 
+import android.util.Log;
+
 import java.util.List;
 
 import es.estheraf.horariosbus.data.model.Stop;
@@ -11,6 +13,8 @@ import es.estheraf.horariosbus.data.provider.sqlite.definition.StopDef;
  * Created by Esther on 21/03/2015.
  */
 public class StopProviderImpl implements StopProvider {
+
+    private final String TAG = this.getClass().getSimpleName();
 
     private static StopProviderImpl instance = new StopProviderImpl();
     private static DataBaseHelper dbHelper;
@@ -32,6 +36,7 @@ public class StopProviderImpl implements StopProvider {
 
     @Override
     public List<Stop> getStops() {
+        Log.v(TAG, "Start getStops()");
         dbHelper.openDataBase();
 
         StopCursor cur = new StopCursor(dbHelper.rawQuery(StopDef.QUERY.ALL));
@@ -39,6 +44,7 @@ public class StopProviderImpl implements StopProvider {
         cur.close();
 
         dbHelper.closeDataBase();
+        Log.v(TAG, "End getStops()."+result.size()+" results.");
         return result;
     }
 

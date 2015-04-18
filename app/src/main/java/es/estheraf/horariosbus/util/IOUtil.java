@@ -12,7 +12,7 @@ public class IOUtil {
     public static void closeQuietly(InputStream s) {
         if (null != s) {
             try {
-                s.close();
+                s.close();  //auto flush
             } catch (IOException e) {
                 LogUtil.error(e);
             }
