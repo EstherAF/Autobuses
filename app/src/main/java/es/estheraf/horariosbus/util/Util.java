@@ -36,4 +36,20 @@ public class Util {
         }
         return result;
     }
+
+    public static final String toString(Object[] elems){
+        if(Util.isEmpty(elems)){
+            return "";
+        }
+
+        StringBuilder strBuilder = new StringBuilder("[");
+        for(Object o : elems){
+            strBuilder.append(o).append(",");
+        }
+        if(strBuilder.length()>1){
+            strBuilder.deleteCharAt(strBuilder.length()-1);
+        }
+        strBuilder.append("]");
+        return strBuilder.toString();
+    }
 }
