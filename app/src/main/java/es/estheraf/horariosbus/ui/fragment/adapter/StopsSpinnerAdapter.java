@@ -49,7 +49,7 @@ public class StopsSpinnerAdapter extends ArrayAdapter<Stop> implements SpinnerAd
             holder = (ViewHolder) view.getTag();
         }
 
-        holder.name.setText(mStops.get(position).nameShort);
+        holder.name.setText(mStops.get(position).nameLong);
         return view;
     }
 
