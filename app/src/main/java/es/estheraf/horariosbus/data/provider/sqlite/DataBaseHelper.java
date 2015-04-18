@@ -177,13 +177,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             //Copy DB, input > output
             IOUtil.copy(input, output);
-
-            //Close the streams
-            output.close(); //auto flush
-            input.close();
         } catch (IOException ex) {
             throw new DataBaseException("Exception copying DB from local assets.", ex);
         } finally {
+            //Close the streams
             IOUtil.closeQuietly(input);
             IOUtil.closeQuietly(output);
         }
