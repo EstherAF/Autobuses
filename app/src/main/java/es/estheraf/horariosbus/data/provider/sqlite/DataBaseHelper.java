@@ -144,22 +144,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * @return true if it exists, false if it doesn't
      */
     private boolean checkDataBase() {
-        SQLiteDatabase checkDB = null;
         try {
             //Try to open de DB, if it's already created
             openDataBase();
-
         } catch (SQLiteException e) {
             //database doesn't exist yet.
-            log.info("Local database doesn't exists yet...");
         } finally {
             closeDataBase();
-            if (checkDB != null) {    //if opened, close it
-                checkDB.close();
-            }
         }
 
-        return checkDB != null ? true : false;
+        boolean result = (myDataBase != null);
+
+        if (result)
+            Log.v(TAG, "Local database already exists...");
+        else
+            Log.v(TAG, "Local database doesn't exists yet...");
+
+        return result;
     }
 
     /**
