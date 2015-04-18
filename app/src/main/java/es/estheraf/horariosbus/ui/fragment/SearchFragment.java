@@ -108,6 +108,8 @@ public class SearchFragment extends Fragment {
 
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
+            mDestinationsAdapter.clear();
+            mDestinationsAdapter.notifyDataSetChanged();
         }
 
         /**
