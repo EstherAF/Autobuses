@@ -24,8 +24,8 @@ public abstract class CustomCursor<C> {
     private Map<String, Integer> columnIndexes = new HashMap<String, Integer>();    //Map of <columnName, idColumns>
 
     public CustomCursor(Cursor cursor) {
-        cursor = cursor;
         Log.v(TAG, "Constructor, cursor is " + ((cursor == null) ? "" : "not") + " empty");
+        this.cursor = cursor;
     }
 
     public Integer getId() {
