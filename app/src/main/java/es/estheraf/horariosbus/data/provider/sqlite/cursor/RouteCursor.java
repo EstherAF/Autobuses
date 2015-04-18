@@ -23,11 +23,11 @@ public class RouteCursor extends CustomCursor<Route>{
     public Route getCurrentValue() {
         Route result = new Route();
         result.id = super.getId();
-        result.nameShort = cursor.getString(getIndex(RouteDef.NAME_SHORT));
-        result.nameLong = cursor.getString(getIndex(RouteDef.NAME_LONG));
-        //result.days = getDays(cursor.getString(getIndex(Naming.ROUTE.DAYS_MAP)));     //not for now
-        //result.company = cursor.getString(getIndex(Naming.ROUTE.COMPANY));     //not for now
-        //result.desc = cursor.getString(getIndex(Naming.ROUTE.DESC));   //not necessary
+        result.nameShort = getString(RouteDef.NAME_SHORT);
+        result.nameLong = getString(RouteDef.NAME_LONG);
+        //result.days = getDays(getString(Naming.ROUTE.DAYS_MAP));     //not for now
+        //result.company = getString(Naming.ROUTE.COMPANY);     //not for now
+        //result.desc = getString(Naming.ROUTE.DESC);   //not necessary
         return result;
     }
 

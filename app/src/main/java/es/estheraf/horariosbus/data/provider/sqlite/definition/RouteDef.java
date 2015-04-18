@@ -19,6 +19,9 @@ public class RouteDef {
     public static String[] ALL_COLUMS = (String[]) (Arrays.asList(
             _ID, NAME_SHORT, NAME_LONG, DAYS_MAP, DESC, COMPANY)).toArray();
 
+    public static String ALIAS_ORIGIN_TIME = "origin_time";
+    public static String ALIAS_DEST_TIME = "dest_time";
+
 
     public static class QUERY {
 

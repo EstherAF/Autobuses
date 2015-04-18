@@ -29,20 +29,28 @@ public abstract class CustomCursor<C> {
     }
 
     public Integer getId() {
-        return cursor.getInt(getIndex(_ID));
+        return getInt(_ID);
     }
 
-    protected Integer getIndex(String column) {
-        if (!columnIndexes.containsKey(column)) {
-            return insertColumnIndex(column);
-        } else
+    /**
+     * Gets de positional index of a column, in the given cursor, and caches it
+     *
+     * @param column column's name
+     * @return positional index of the column
+     */
+    protected Integer getIndex(String column) throws DataBaseException {
+        if (columnIndexes.containsKey(column)) {  //Already cached
             return columnIndexes.get(column);
-    }
+        } else {    //Not cached
+            int indexColumn = cursor.getColumnIndex(column);    //Query
+            if (indexColumn == -1) {
+                throw new DataBaseException("Column " + column + " not found. Existing columns: " + Util.toString(cursor.getColumnNames()));
+            }
+            columnIndexes.put(column, indexColumn);         //Cache query
+            Log.v(TAG, "Cached column " + column + ", index " + indexColumn);
+            return indexColumn;
+        }
 
-    private int insertColumnIndex(String column) {
-        int index = cursor.getColumnIndex(column);
-        columnIndexes.put(column, index);
-        return index;
     }
 
     public abstract C getCurrentValue();
@@ -85,5 +93,32 @@ public abstract class CustomCursor<C> {
     public void close() {
         cursor.close();
         this.cursor = null;
+    }
+
+    protected String getString(String columnName) {
+        try {
+            return cursor.getString(getIndex(columnName));
+        } catch (DataBaseException ex) {
+            Log.e(TAG, "Error getting string column " + columnName, ex);
+            return null;
+        }
+    }
+
+    protected int getInt(String columnName) {
+        try {
+            return cursor.getInt(getIndex(columnName));
+        } catch (DataBaseException ex) {
+            Log.e(getClass().getName(), "Error getting int column " + columnName, ex);
+            return 0;
+        }
+    }
+
+    protected long getLong(String columnName) {
+        try {
+            return cursor.getLong(getIndex(columnName));
+        } catch (DataBaseException ex) {
+            Log.e(getClass().getName(), "Error getting long column " + columnName, ex);
+            return 0;
+        }
     }
 }

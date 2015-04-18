@@ -21,10 +21,10 @@ public class SimpleResultRouteCursor extends CustomCursor<SimpleResultRoute> {
     public SimpleResultRoute getCurrentValue() {
         SimpleResultRoute result = new SimpleResultRoute();
         result.routeId = getId();
-        result.routeName = cursor.getString(getIndex(RouteDef.NAME_SHORT));
-        LocalTime departureTime = new LocalTime(cursor.getLong(getIndex(RouteScheduleDef.DEPARTURE_TIME)));
-        result.departureTime = departureTime.plusSeconds(cursor.getInt(getIndex("origin_time")));
-        result.destinationTime = departureTime.plusSeconds(cursor.getInt(getIndex("dest_time")));
+        result.routeName = getString(RouteDef.NAME_SHORT);
+        LocalTime departureTime = new LocalTime(getLong(RouteScheduleDef.DEPARTURE_TIME));
+        result.departureTime = departureTime.plusSeconds(getInt(RouteDef.ALIAS_ORIGIN_TIME));
+        result.destinationTime = departureTime.plusSeconds(getInt(RouteDef.ALIAS_DEST_TIME));
         return result;
     }
 }

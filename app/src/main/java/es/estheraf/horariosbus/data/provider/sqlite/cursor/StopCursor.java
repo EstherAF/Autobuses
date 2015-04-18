@@ -18,8 +18,8 @@ public class StopCursor extends CustomCursor<Stop>{
     public Stop getCurrentValue() {
         Stop result = new Stop();
         result.id = super.getId();
-        result.nameShort = cursor.getString(getIndex(StopDef.NAME_SHORT));
-        result.nameLong = cursor.getString(getIndex(StopDef.NAME_LONG));
+        result.nameLong = getString(StopDef.NAME_LONG);
+        //result.nameShort = getString(StopDef.NAME_SHORT);
         //result.coords = cursor.getString(getIndex(COORDS));       //not for now
         //result.parentId = cursor.getInt(getIndex(PARENT_ID));     //not for now
         //result.desc = cursor.getString(getIndex(DESC));   //not necessary
