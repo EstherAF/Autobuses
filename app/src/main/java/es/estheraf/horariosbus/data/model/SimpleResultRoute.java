@@ -2,12 +2,14 @@ package es.estheraf.horariosbus.data.model;
 
 import org.joda.time.LocalTime;
 
+import java.io.Serializable;
+
 /**
  * Simple result of a search of routes.
  *
  * @author Esther Álvarez
  */
-public class SimpleResultRoute implements Comparable {
+public class SimpleResultRoute implements Comparable, Serializable {
 
     /**
      * Route's internal id
