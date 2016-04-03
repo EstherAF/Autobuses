@@ -1,11 +1,13 @@
 package es.estheraf.horariosbus.data.model;
 
+import java.io.Serializable;
+
 /**
  * POJO for bus stop
  *
  * @author Esther Álvarez Feijoo
  */
-public class Stop {
+public class Stop implements Serializable {
 
     /**
      * Unique id for this stop
@@ -40,7 +42,7 @@ public class Stop {
     /**
      * Constructor
      *
-     * @param id
+     * @param id internal PK
      */
     public Stop(int id) {
         this(id, null);
@@ -49,8 +51,8 @@ public class Stop {
     /**
      * Constructor that receives all attributes
      *
-     * @param id
-     * @param nameShort
+     * @param id internal PK
+     * @param nameShort name in a short way
      */
     public Stop(int id, String nameShort) {
         this.id = id;
@@ -65,9 +67,8 @@ public class Stop {
 
         Stop stop = (Stop) o;
 
-        if (!id.equals(stop.id)) return false;
+        return id.equals(stop.id);
 
-        return true;
     }
 
     @Override

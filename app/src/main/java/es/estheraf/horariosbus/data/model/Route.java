@@ -1,9 +1,6 @@
 package es.estheraf.horariosbus.data.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.Calendar;
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +8,7 @@ import java.util.List;
  *
  * @author Esther Álvarez Feijoo
  */
-public class Route {
+public class Route implements Serializable {
 
     /**
      * Internal _id

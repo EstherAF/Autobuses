@@ -1,13 +1,13 @@
 package es.estheraf.horariosbus.data.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
 
 /**
  * POJO for routeStops of bus routes
  *
  * @author Esther Álvarez Feijoo
  */
-public class RouteStop {
+public class RouteStop implements Serializable {
 
     public Route route;
     public Stop stop;

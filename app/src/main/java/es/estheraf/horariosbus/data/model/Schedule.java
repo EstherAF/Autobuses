@@ -2,6 +2,7 @@ package es.estheraf.horariosbus.data.model;
 
 import org.joda.time.LocalTime;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -10,7 +11,7 @@ import java.util.List;
  *
  * @author Esther Álvarez Feijoo
  */
-public class Schedule {
+public class Schedule implements Serializable{
 
     /**
      * Days of week of this schedule
