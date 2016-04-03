@@ -19,10 +19,10 @@ public class StopCursor extends CustomCursor<Stop>{
         Stop result = new Stop();
         result.id = super.getId();
         result.nameLong = getString(StopDef.NAME_LONG);
-        //result.nameShort = getString(StopDef.NAME_SHORT);
-        //result.coords = cursor.getString(getIndex(COORDS));       //not for now
-        //result.parentId = cursor.getInt(getIndex(PARENT_ID));     //not for now
-        //result.desc = cursor.getString(getIndex(DESC));   //not necessary
+        result.nameShort = getString(StopDef.NAME_SHORT);
+        result.coords = getString(StopDef.COORDS);       //not for now
+        result.parentId = getInt(StopDef.PARENT_ID);     //not for now
+        //result.desc = getString(StopDef.DESC);   //not necessary
         return result;
     }
 }

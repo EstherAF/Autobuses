@@ -18,7 +18,11 @@ public class SimpleResultRoute implements Comparable, Serializable {
     /**
      * Route's name
      */
-    public String routeName;
+    public String routeShortName;
+    /**
+     * Route's name
+     */
+    public String routeLongName;
     /**
      * Departure time, from the specified origin
      */

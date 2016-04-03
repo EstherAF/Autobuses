@@ -97,7 +97,7 @@ public class ResultListAdapter extends ArrayAdapter<SimpleResultRoute> implement
          */
         private void populateView(ViewHolder holder, SimpleResultRoute result) {
             String pattern = getContext().getResources().getString(R.string.time_pattern);
-            holder.route.setText(result.routeName);
+            holder.route.setText(result.routeLongName);
             StringBuilder hoursBuilder = new StringBuilder(result.departureTime.toString(pattern))
                     .append(getContext().getResources().getString(R.string.result_times_separator))
                     .append(result.departureTime.toString(pattern));

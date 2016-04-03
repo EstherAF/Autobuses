@@ -42,13 +42,13 @@ public class ResultFragment extends Fragment {
         mResultList = (ListView) getView().findViewById(R.id.result_list);
         mBar = new BarViewHolder(getView());
         //adapter for result list
-        mResultList.setAdapter(new ResultListAdapter(getActivity(), getUIResults().results));
+        mResultList.setAdapter(new ResultListAdapter(getActivity(), uiResults().results));
         //Modify view elements
-        mBar.populateView(getView(), getUIResults().search);
+        mBar.populateView(getView(), uiResults().search);
 
     }
 
-    private UIResult getUIResults() {
+    private UIResult uiResults() {
         return (UIResult) getArguments().getSerializable(RESULTS.val());
     }
 
@@ -75,8 +75,8 @@ public class ResultFragment extends Fragment {
          * @param search Object that contains search info, to generate bar's texts
          */
         private void populateView(View view, SearchRoute search) {
-            this.origin.setText(search.origin.nameShort);
-            this.destination.setText(search.destination.nameShort);
+            this.origin.setText(search.origin.nameLong);
+            this.destination.setText(search.destination.nameLong);
             String pattern = view.getResources().getString(R.string.date_pattern);
             this.date.setText(search.date.toString(pattern));
         }

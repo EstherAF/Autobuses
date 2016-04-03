@@ -25,8 +25,12 @@ public class RouteDef {
 
     public static class QUERY {
 
-
-        private static String ROUTE_SELECT = Util.join(",", "r." + RouteDef._ID, "r." + RouteDef.NAME_LONG, "r." + RouteDef.COMPANY);
+        private static String ROUTE_SELECT = Util.join(",",
+                "r." + RouteDef._ID,
+                "r." + RouteDef.NAME_SHORT,
+                "r." + RouteDef.NAME_LONG,
+                "r." + RouteDef.COMPANY,
+                "r." + RouteDef.DAYS_MAP);
 
         public static final String ALL = "SELECT " + ROUTE_SELECT + " FROM route r";
 
@@ -34,13 +38,13 @@ public class RouteDef {
                 " FROM route r JOIN route_stop rs ON r._id = rs.route_id " +
                 " WHERE rs.stop_id = ?";
 
-        public static final String BEWTEEN_STOPS = "SELECT r._id, r.name_long, sch.departure_time, " +
-                " rs1.time_from_departure as origin_time, rs2.time_from_departure as dest_time" +
+        public static final String BETWEEN_STOPS = "SELECT " + ROUTE_SELECT
+                + ", sch.departure_time, rs1.time_from_departure as origin_time, rs2.time_from_departure as dest_time" +
                 " FROM route r " +
                 " JOIN route_schedule sch ON r._id = sch.route_id " +
                 " JOIN route_stop rs1 ON r._id = rs1.route_id " +
                 " JOIN route_stop rs2 ON r._id = rs2.route_id AND rs1._id != rs2._id AND rs1.pos < rs2.pos" +
-                " WHERE r.days_map LIKE '%?%' AND sch.days_map LIKE '%?%' " +
+                " WHERE r.days_map LIKE ? AND sch.days_map LIKE ? " +
                 " AND rs1.stop_id = ? AND rs2.stop_id = ?";
     }
 }

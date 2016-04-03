@@ -17,9 +17,9 @@ import java.util.List;
 
 import es.estheraf.horariosbus.R;
 import es.estheraf.horariosbus.activity.MainActivity;
+import es.estheraf.horariosbus.data.DataProviderFacade;
 import es.estheraf.horariosbus.data.model.SearchRoute;
 import es.estheraf.horariosbus.data.model.Stop;
-import es.estheraf.horariosbus.data.provider.sqlite.StopProviderImpl;
 import es.estheraf.horariosbus.ui.BundleKey;
 import es.estheraf.horariosbus.ui.fragment.adapter.StopsSpinnerAdapter;
 
@@ -89,7 +89,7 @@ public class SearchFragment extends Fragment {
     }
 
     private void createAdapters() {
-        mOriginsAdapter = new StopsSpinnerAdapter(getActivity(), StopProviderImpl.getInstance().getStops());
+        mOriginsAdapter = new StopsSpinnerAdapter(getActivity(), DataProviderFacade.getInstance().getStops());
         mOrigins.setAdapter(mOriginsAdapter);
         mDestinationsAdapter = new StopsSpinnerAdapter(getActivity(), new ArrayList<Stop>());
         mDestinations.setAdapter(mDestinationsAdapter);
@@ -118,7 +118,7 @@ public class SearchFragment extends Fragment {
          * @param origin
          */
         private void updateDestinationsSpinner(Stop origin) {
-            List<Stop> newDestinations = StopProviderImpl.getInstance().getDestinations(origin.id);
+            List<Stop> newDestinations = DataProviderFacade.getInstance().getDestinations(origin);
             mDestinationsAdapter.clear();
             mDestinationsAdapter.addAll(newDestinations);
             mDestinationsAdapter.notifyDataSetChanged();

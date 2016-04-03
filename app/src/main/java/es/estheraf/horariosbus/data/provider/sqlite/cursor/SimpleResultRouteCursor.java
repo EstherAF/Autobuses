@@ -21,7 +21,8 @@ public class SimpleResultRouteCursor extends CustomCursor<SimpleResultRoute> {
     public SimpleResultRoute getCurrentValue() {
         SimpleResultRoute result = new SimpleResultRoute();
         result.routeId = getId();
-        result.routeName = getString(RouteDef.NAME_SHORT);
+        result.routeShortName = getString(RouteDef.NAME_SHORT);
+        result.routeLongName = getString(RouteDef.NAME_LONG);
         LocalTime departureTime = new LocalTime(getLong(RouteScheduleDef.DEPARTURE_TIME));
         result.departureTime = departureTime.plusSeconds(getInt(RouteDef.ALIAS_ORIGIN_TIME));
         result.destinationTime = departureTime.plusSeconds(getInt(RouteDef.ALIAS_DEST_TIME));

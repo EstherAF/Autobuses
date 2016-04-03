@@ -22,7 +22,12 @@ public class StopDef {
 
     public static class QUERY {
 
-        private static String SELECT = Util.join(",", "s." + _ID, "s." + NAME_LONG);
+        private static String SELECT = Util.join(",",
+                "s." + _ID,
+                "s." + NAME_SHORT,
+                "s." + NAME_LONG,
+                "s." + COORDS,
+                "s." + PARENT_ID);
 
         public static String ALL = "SELECT " + SELECT + " FROM stop s ORDER BY s.name_long";
         public static String BY_ID = "SELECT " + SELECT + " FROM stop s WHERE s._id = ?";

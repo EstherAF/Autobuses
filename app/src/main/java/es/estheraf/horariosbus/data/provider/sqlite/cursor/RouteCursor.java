@@ -25,8 +25,8 @@ public class RouteCursor extends CustomCursor<Route>{
         result.id = super.getId();
         result.nameShort = getString(RouteDef.NAME_SHORT);
         result.nameLong = getString(RouteDef.NAME_LONG);
-        //result.days = getDays(getString(Naming.ROUTE.DAYS_MAP));     //not for now
-        //result.company = getString(Naming.ROUTE.COMPANY);     //not for now
+        result.days = getDays(RouteDef.DAYS_MAP);     //not for now
+        result.company = getString(RouteDef.COMPANY);     //not for now
         //result.desc = getString(Naming.ROUTE.DESC);   //not necessary
         return result;
     }

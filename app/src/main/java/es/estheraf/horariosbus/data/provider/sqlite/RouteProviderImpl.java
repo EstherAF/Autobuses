@@ -33,7 +33,8 @@ public class RouteProviderImpl implements RouteProvider {
     public List<Route> getRoutes(Integer idStop) {
         dbHelper.openDataBase();
 
-        RouteCursor cur = new RouteCursor(dbHelper.rawQuery(RouteDef.QUERY.BY_STOP, idStop.toString()));
+        RouteCursor cur = new RouteCursor(dbHelper.rawQuery(RouteDef.QUERY.BY_STOP,
+                String.valueOf(idStop)));
         List<Route> result = cur.getAllValues();
         cur.close();
 
@@ -45,7 +46,7 @@ public class RouteProviderImpl implements RouteProvider {
     public List<Route> getRoutes() {
         dbHelper.openDataBase();
 
-        RouteCursor cur = new RouteCursor(dbHelper.rawQuery(RouteDef.QUERY.ALL));
+        RouteCursor cur = new RouteCursor(dbHelper.rawQuery(RouteDef.QUERY.ALL));   //no args
         List<Route> result = cur.getAllValues();
         cur.close();
 
@@ -57,7 +58,11 @@ public class RouteProviderImpl implements RouteProvider {
     public List<SimpleResultRoute> findRoutes(LocalDate date, int idOrigin, int idDestination) {
         dbHelper.openDataBase();
 
-        SimpleResultRouteCursor cur = new SimpleResultRouteCursor(dbHelper.rawQuery(RouteDef.QUERY.BEWTEEN_STOPS));
+        SimpleResultRouteCursor cur = new SimpleResultRouteCursor(dbHelper.rawQuery(RouteDef.QUERY.BETWEEN_STOPS,
+                "%" + date.getDayOfWeek() + "%",
+                "%" + date.getDayOfWeek() + "%",
+                String.valueOf(idOrigin),
+                String.valueOf(idDestination)));
         List<SimpleResultRoute> simpleResultRoutes = cur.getAllValues();
         cur.close();
 
